@@ -1,0 +1,10 @@
+*.o
+*.d
+*.a
+*.mk
+build
+__pycache__/
+*.py[cod]
+*$py.class
+
+rockDBs/**

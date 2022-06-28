@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package sockets;
+
+message client_msg {
+  enum OperationType {
+    PUT         = 0;
+    GET         = 1;
+    TXN_START   = 2;
+    TXN_PUT     = 3;
+    TXN_GET     = 4;
+    TXN_GET_AND_EXECUTE     = 5;
+    TXN_COMMIT  = 6;
+    TXN_ABORT   = 7;
+    INIT        = 8;
+  }
+
+  message OperationData {
+    required OperationType type = 1;
+    optional int32 op_id        = 2;
+    optional int32 txn_id       = 3;
+    optional int32 key          = 4;
+    optional string value       = 5;
+  optional int32 client_id      = 6;
+
+    /* this is only for the initialization */
+    optional int32 port         = 7;
+  }
+
+  repeated OperationData ops = 8;
+
+}

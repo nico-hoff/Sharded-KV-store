@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package server;
+
+message server_response {
+  message  reply {
+    required int32 op_id = 1;
+    required bool success = 2;
+    optional int32 txn_id = 3;
+    optional string value = 4;
+  }
+
+  repeated reply reps = 5;
+
+}

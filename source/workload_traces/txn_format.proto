@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package TxnTest;
+
+enum OpType {
+  OP_PUT = 0;
+  OP_GET = 1;
+  OP_SEND_AND_EXECUTE = 2;
+  OP_PREPARE = 3;
+  OP_COMMIT = 4;
+  OP_ABORT = 5;
+  OP_PAUSE = 6;
+  OP_KILL = 7;
+  OP_SET = 8;
+  OP_ADD = 9;
+  OP_SUB = 10;
+  OP_MULT = 11;
+  OP_DIV = 12;
+  OP_MOD = 13;
+  OP_AND = 14;
+  OP_OR = 15;
+  OP_XOR = 16;
+  OP_NOT = 17;
+  OP_NAND = 18;
+  OP_NOR = 19;
+}
+
+message KVPair {
+  OpType op = 1;
+  bytes key = 2;
+  bytes value = 3;
+}
+
+message Txn {
+  bool is_txn = 1;
+  uint64 txn_id = 2;
+  repeated uint64 depends_on = 3;
+  repeated KVPair cmds = 4;
+}
+
+message Test {
+  repeated Txn txns = 1;
+}

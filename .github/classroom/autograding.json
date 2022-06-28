@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "build",
+      "setup": "",
+      "run": "timeout -s9 5m ./build.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "Test single shard",
+      "setup": "",
+      "run": "timeout -s9 10m python3 tests/test_single_shard.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Test two shards",
+      "setup": "",
+      "run": "timeout -s9 10m python3 tests/test_two_shards.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Test sharding",
+      "setup": "",
+      "run": "timeout -s9 10m python3 tests/test_sharding.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test join reconfiguration",
+      "setup": "",
+      "run": "timeout -s9 10m python3 tests/test_shard_join.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
