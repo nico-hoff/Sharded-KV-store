@@ -146,7 +146,7 @@ int connect_to(int port, std::string server_address, int flag, int timeout_flag)
 	if ((connect(sock_fd, (struct sockaddr *)&master_addr, sizeof(master_addr))) < 0)
 	{
 		std::cout << "connect Errno: " << errno << std::endl;
-		return -1;
+		exit(1); // return -1;
 	}
 
 	if (flag == 1)
@@ -155,7 +155,7 @@ int connect_to(int port, std::string server_address, int flag, int timeout_flag)
 	return sock_fd;
 }
 
-int accept_connection(int port, std::vector<int> *connections, int flag)
+void accept_connections(int port, std::vector<int> *connections, int flag)
 {
 	int listen_fd;
 	// init recv_sockfd -------------------------------------
@@ -239,7 +239,7 @@ int accept_connection(int port, std::vector<int> *connections, int flag)
 
 	close_socket(listen_fd, flag);
 
-	return connected_fd;
+	// return connected_fd;
 }
 
 bool recv_clt_message(int sockfd, sockets::client_msg *message)

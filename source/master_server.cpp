@@ -140,14 +140,14 @@ void manage_server()
 			handle_connection(connected_fd);
 		}
 
-		if (num_servers != counter)
+		if (num_servers != counter) // >
 		{
 			fmt::print("\n------------------------------\n");
 			fmt::print("Current cluster of {} servers:\n", num_servers);
 			for (auto it = map_fds.begin(); it != map_fds.end(); ++it)
 				fmt::print("  < {} - {} >\n", it->first, it->second);
 			fmt::print("------------------------------\n");
-			counter = num_servers;
+			counter = num_servers; // counter++;
 		}
 
 		usleep(5 * 1000);
@@ -156,11 +156,9 @@ void manage_server()
 
 void listen_for_connections()
 {
-	int sock_fd;
 	while (true)
 	{
-		sock_fd = accept_connection(master_port, &connections, 0);
-		// connections.push_back(sock_fd);
+		accept_connections(master_port, &connections, 0);
 	}
 }
 

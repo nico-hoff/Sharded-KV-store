@@ -367,7 +367,7 @@ int client(int port, std::string operation, int key, std::string value, int mast
 
 	int server_fd = -1;
 	while (server_fd == -1)
-		server_fd = connect_to(server_port, server_address, 0, 1);
+		server_fd = connect_to(server_port, server_address, 0, 3);
 
 	// setsockopt(server_fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof timeout);
 

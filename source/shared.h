@@ -131,7 +131,7 @@ inline void construct_message(char *dst, const char *payload,
 }
 
 int connect_to(int port, std::string server_address, int flag, int timeout_flag);
-int accept_connection(int port, std::vector<int> *connections, int flag);
+void accept_connections(int port, std::vector<int> *connections, int flag);
 bool recv_clt_message(int sockfd, sockets::client_msg *message);
 bool recv_svr_message(int sockfd, server::server_response::reply *message);
 void send_clt_message(int sockfd, sockets::client_msg message);

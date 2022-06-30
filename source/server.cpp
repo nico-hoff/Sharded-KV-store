@@ -221,14 +221,10 @@ void server_worker(ServerOP *server_op, rocksdb::DB &rock_db)
 
 void listen_for_connections()
 {
-	int sock_fd;
 	while (true)
 	{
-		sock_fd = accept_connection(server_port, &connections, 0);
-		m.lock();
-		// connections.push_back(sock_fd);
-		fmt::print("Connections: {} - last {}\n", connections.size(), sock_fd);
-		m.unlock();
+		accept_connections(server_port, &connections, 0);
+		fmt::print("Connections: {} - last {}\n", connections.size(), connections.back());
 	}
 }
 

@@ -1,4 +1,4 @@
-#rm -rf build
+rm -rf build
 
 make -C rocksdb static_lib -j$(nproc)
 
